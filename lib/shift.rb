@@ -14,4 +14,8 @@ class Shift
   def a_key
     @key[0..1]
   end
+
+  def b_key
+    @key[1..2]
+  end
 end
