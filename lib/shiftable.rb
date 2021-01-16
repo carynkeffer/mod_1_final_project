@@ -6,10 +6,6 @@ module Shiftable
   end
 
   def random_5_digit
-    key = rand(1000..99999).to_s
-    if key.length == 4
-      key = sum_of("0", key)
-      return key
-    end
+    key = rand(1000..99999).to_s.rjust(5, "0")
   end
 end
