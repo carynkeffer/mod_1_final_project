@@ -7,7 +7,7 @@ class Crypt
 
   def initialize(info)
     @message = info[:message]
-    @key = info[:key]
+    @key = info[:key] || rand(1000..99999).to_s
     @date = info[:date] || Date.today.to_s
   end
 

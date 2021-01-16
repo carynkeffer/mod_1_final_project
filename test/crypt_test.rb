@@ -24,4 +24,10 @@ class CryptTest < Minitest::Test
     assert_equal Date.today.to_s, crypt.date
   end
 
+  def test_key_can_take_no_argument
+    crypt = Crypt.new({message: "hello world"})
+
+    assert_instance_of String, crypt.key
+  end
+
 end
