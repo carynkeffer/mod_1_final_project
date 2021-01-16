@@ -1,8 +1,7 @@
-require 'date'
-require './lib/enigma'
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/crypt'
+require './lib/enigma'
+require 'date'
 
 class EnigmaTest < Minitest::Test
   def test_it_exists
