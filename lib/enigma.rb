@@ -1,3 +1,3 @@
-class Enigma
+class Enigma < Crypt
 
 end
