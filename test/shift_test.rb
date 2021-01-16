@@ -24,19 +24,11 @@ class ShiftTest < Minitest::Test
     assert_equal 5, shift.random_number_generator.length
   end
 
-  def test_it_can_assign_index_0_1_to_a_key
+  def test_it_can_assign_index_to_all_keys
     shift = Shift.new
 
     shift.random_number_generator
 
-    assert_equal shift.key[0..1], shift.a_key
-  end
-
-  def test_it_can_assign_index_1_2_to_a_key
-    shift = Shift.new
-
-    shift.random_number_generator
-
-    assert_equal shift.key[1..2], shift.b_key
+    assert_equal 4, shift.all_keys.count
   end
 end

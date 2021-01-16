@@ -11,11 +11,11 @@ class Shift
     @key = rand(1000..99999).to_s.rjust(5, "0")
   end
 
-  def a_key
-    @key[0..1]
-  end
-
-  def b_key
-    @key[1..2]
+  def all_keys
+    keys = []
+    @key.split("").each_cons(2) do |num|
+      keys << num[0] + num[1]
+    end
+    keys
   end
 end
