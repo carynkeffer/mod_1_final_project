@@ -17,8 +17,9 @@ class ShiftableTest < Minitest::Test
     assert_instance_of String, random_5_digit
   end
 
-  def test_it_can_add_0_to_random_5_digit_if_4_digits
-
+  def test_it_can_assign_indexes_to_keys
+    mock = 31456
+    assert_equal 31, a_key
   end
 
 end
