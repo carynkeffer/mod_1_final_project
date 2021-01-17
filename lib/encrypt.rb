@@ -1,21 +1,18 @@
-require './shift'
-require './enigma'
+require './lib/shift'
+require './lib/enigma'
 
 shift = Shift.new
-enigma = Enigma.new(shift)
+enigma = Enigma.new
 
-file = File.open("#{ARGV[0]}", "r").each do |line|
-  require "pry"; binding.pry
-  File.open("encrypted.txt", "a+").each do |x|
+file = File.open("#{ARGV[0]}", "r")
+message = gets.chomp
+require "pry"; binding.pry
 
-    # x << [enigma.encrypt(message, key, date)]
-  end
+file_2 = File.open("#{ARGV[1]}", "a+").each do |x|
+        x << [enigma.encrypt(message, key, date)]
 end
+require "pry"; binding.pry
 
-
-#
-#
-#
 # date = ARGV[2]
 #
 # enigma.encrypt(message, key, date)
