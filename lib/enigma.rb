@@ -4,7 +4,7 @@ class Enigma
     @key = rand(1000..99999).to_s.rjust(5, "0")
   end
 
-  def encrypt(message, key = nil, date = nil)
+  def encrypt(message, key = random_number_generator, date = nil)
     encrypt_output = Hash.new
     encrypt_output["encryption:"] = message
     encrypt_output["key:"] = key
