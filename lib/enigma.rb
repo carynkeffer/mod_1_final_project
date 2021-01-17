@@ -8,7 +8,7 @@ class Enigma
     Time.now.strftime("%d%m%y")
   end
 
-  def encrypt(message, key = random_number_generator, date = nil)
+  def encrypt(message, key = random_number_generator, date = today)
     encrypt_output = Hash.new
     encrypt_output["encryption:"] = message
     encrypt_output["key:"] = key
