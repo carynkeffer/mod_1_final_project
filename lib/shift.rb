@@ -18,8 +18,14 @@ class Shift
     end
   end
 
-  def ordinal_values
-    # assign ordinal values to each letter in the message
+  def ordinal_values(message)
+    ords = []
+    message.split.each do |split|
+      split.chars.map do |char|
+        ords << char.downcase.ord
+      end
+    end
+    ords
   end
 
   def shift

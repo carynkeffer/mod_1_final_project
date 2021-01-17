@@ -54,4 +54,10 @@ class ShiftTest < Minitest::Test
     assert_instance_of Hash, shift.shifts_by_name
     assert_instance_of Integer, shift.shifts_by_name["A"]
   end
+
+  def test_ordinal_values
+    shift = Shift.new
+
+    assert_instance_of Array, shift.ordinal_values("hello world")
+  end
 end
