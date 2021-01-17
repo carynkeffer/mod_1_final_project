@@ -39,6 +39,6 @@ class ShiftTest < Minitest::Test
     assert_equal 2, shift.year.length
     assert_equal 2, shift.day.length
     assert_equal 2, shift.month.length
-    assert_equal 6, shift.offset.length
+    assert_equal "011621", shift.offset
   end
 end

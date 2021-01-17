@@ -1,6 +1,9 @@
 require 'date'
+require './lib/encryptable'
 
 class Shift
+  include Encryptable
+
   attr_reader :key
 
   def initialize
@@ -17,25 +20,5 @@ class Shift
       keys << num[0] + num[1]
     end
     keys
-  end
-
-  def today
-    Date.today.strftime
-  end
-
-  def year
-    today[2..3]
-  end
-
-  def day
-    today[8..9]
-  end
-
-  def month
-    today[5..6]
-  end
-
-  def offset
-    month + day + year
   end
 end
