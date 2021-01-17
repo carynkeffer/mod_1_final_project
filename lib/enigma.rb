@@ -1,13 +1,15 @@
 class Enigma
 
-  def initialize
+  def initialize(shift)
+    @shift = shift
   end
 
-  def encrypt(message, key, date)
+  def encrypt(message,  = key, = date)
+
     # create a hash
   end
 
-  def decrypt
+  def decrypt(message, key, date)
     # create a hash
   end
 end

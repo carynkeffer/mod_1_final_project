@@ -1,5 +1,5 @@
-require './lib/datable'
-require './lib/key'
+require './datable'
+require './key'
 
 class Shift < Key
   include Datable
@@ -35,6 +35,16 @@ class Shift < Key
     ords
   end
 
+  def counter(shift, ordinal)
+    counter_value = shift
+    until counter_value == 0
+      ordinal += 1
+      ordinal = 97 if ordinal == 123
+      counter_value -= 1
+    end
+    ordinal
+  end
+
   def ords_by_index
     by_index = Hash.new
     ordinal_values.each_with_index do |ord, index|
@@ -46,21 +56,22 @@ class Shift < Key
   def parse_index
     shifted_ords = ords_by_index.map do |key|
       if key[0] % 4 == 3
-        shifts_by_name["D"] + key[1]
+        counter(shifts_by_name["D"], key[1])
       elsif key[0] % 4 == 2
-        shifts_by_name["C"] + key[1]
+        counter(shifts_by_name["C"], key[1])
       elsif key[0] % 4 == 1
-        shifts_by_name["B"] + key[1]
+        counter(shifts_by_name["B"], key[1])
       else
-        shifts_by_name["A"] + key[1]
+        counter(shifts_by_name["A"], key[1])
       end
     end
     shifted_ords
   end
 
-  # def char_shift_by
-  #   ordinal_values.rotate(shifts_by_name["A"])
-  # end
+  def char_shift_by
+    # require "pry"; binding.pry
+    ordinal_values.rotate(shifts_by_name["A"])
+  end
   #
   # def add_ords_to_shifts
   #   x = ordinal_values("hello world")

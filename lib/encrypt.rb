@@ -1,15 +1,28 @@
-file = File.open('lib/#{ARGV[0]}', "r")
-enigma = Enigma.new
-enigma.encrypt(message, key, date)
-key =
+require './shift'
+require './enigma'
 
-date = ARGV[2]
+shift = Shift.new
+enigma = Enigma.new(shift)
 
-enigma.encrypt(message, key, date)
+file = File.open("#{ARGV[0]}", "r").each do |line|
+  require "pry"; binding.pry
+  File.open("encrypted.txt", "a+").each do |x|
 
-new_file = File.new('lib/#{ARGV[1]}', "w")
-f.write(response)
+    # x << [enigma.encrypt(message, key, date)]
+  end
+end
 
-response = gets.chomp
 
-puts "Created #{file.path} with the key #{} and date #{}"
+#
+#
+#
+# date = ARGV[2]
+#
+# enigma.encrypt(message, key, date)
+#
+# new_file = File.new('lib/#{ARGV[1]}', "w")
+# f.write(response)
+#
+# response = gets.chomp
+#
+# puts "Created #{file.path} with the key #{} and date #{}"
