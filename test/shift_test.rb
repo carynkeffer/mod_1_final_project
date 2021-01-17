@@ -28,6 +28,7 @@ class ShiftTest < Minitest::Test
     shift.random_number_generator
 
     assert_equal 4, shift.all_keys.count
+    assert_equal 4, shift.keys_to_integers.count
   end
 
   def test_it_can_find_todays_date
@@ -49,7 +50,8 @@ class ShiftTest < Minitest::Test
 
     shift.random_number_generator
 
-    assert_instance_of Hash, shift.shifts
-    assert_equal 4, shift.values.uniq.count
+    assert_instance_of Array, shift.shifts
+    assert_instance_of Hash, shift.shifts_by_name
+    assert_instance_of Integer, shift.shifts_by_name["A"]
   end
 end
