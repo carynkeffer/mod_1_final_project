@@ -31,4 +31,14 @@ class ShiftTest < Minitest::Test
 
     assert_equal 4, shift.all_keys.count
   end
+
+  def test_it_can_find_todays_date
+    shift = Shift.new
+
+    assert_equal Date.today.strftime, shift.today
+    assert_equal 2, shift.year.length
+    assert_equal 2, shift.day.length
+    assert_equal 2, shift.month.length
+    assert_equal 6, shift.offset.length
+  end
 end
