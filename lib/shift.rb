@@ -27,9 +27,9 @@ class Shift < Key
     end
   end
 
-  def ordinal_values(message)
+  def ordinal_values
     ords = []
-      message.chars.map do |char|
+      @message.chars.map do |char|
         ords << char.downcase.ord
     end
     ords
