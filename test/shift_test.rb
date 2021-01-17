@@ -60,4 +60,12 @@ class ShiftTest < Minitest::Test
 
     assert_instance_of Array, shift.ordinal_values("hello world")
   end
+
+  def test_it_can_shift
+    shift = Shift.new
+
+    shift.random_number_generator
+
+    assert_equal "wello world", shift.shift
+  end
 end

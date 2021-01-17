@@ -29,6 +29,8 @@ class Shift
   end
 
   def shift
+    x = ordinal_values("hello world")
+    require "pry"; binding.pry
     # this is how you rotate ordinal values
   end
 end
