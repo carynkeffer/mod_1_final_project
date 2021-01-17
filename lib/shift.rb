@@ -4,6 +4,12 @@ require './lib/key'
 class Shift < Key
   include Datable
 
+  attr_reader :message
+
+  def write(message)
+    @message = message
+  end
+
   def shifts
     zips = []
     keys_to_integers.zip(offsets) do |key|
@@ -29,7 +35,12 @@ class Shift < Key
     ords
   end
 
-  def shift
+  def char_shift_by
+    x = ordinal_values(message)
+    # require "pry"; binding.pry
+  end
+
+  def add_ords_to_shifts
     x = ordinal_values("hello world")
     require "pry"; binding.pry
     # this is how you rotate ordinal values

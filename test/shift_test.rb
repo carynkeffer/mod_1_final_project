@@ -41,4 +41,21 @@ class ShiftTest < Minitest::Test
     assert_equal true, shift.ordinal_values("hello world").include?(32)
   end
 
+  def test_it_has_a_message
+    shift = Shift.new
+
+    shift.write("hello world")
+
+    assert_equal "hello world", shift.message
+  end
+
+  def test_add_ords_to_shifts
+    skip
+    shift = Shift.new
+
+    assert_instance_of Array, shift.ordinal_values("hello world")
+    assert_instance_of Array shift.char_shift_by
+    # assert_equal 0, shift.add_ords_to_shifts.count
+  end
+
 end
