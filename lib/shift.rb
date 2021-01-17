@@ -1,12 +1,15 @@
-require './lib/encryptable'
+require './lib/datable'
+require './lib/key'
 
-class Shift
-  include Encryptable
+class Shift < Key
+  include Datable
 
-  attr_reader :key
-
-  def initialize
-    @key = key
+  def shifts
+    zips = []
+    keys_to_integers.zip(offsets) do |key|
+      zips << key.sum
+    end
+    zips
   end
 
   def shifts_by_name

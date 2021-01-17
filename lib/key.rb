@@ -1,15 +1,4 @@
-module Encryptable
-  def today
-    Time.now.strftime("%d%m%y")
-  end
-
-  def date_squared
-    today.to_i ** 2
-  end
-
-  def offsets
-    date_squared.digits[0..3].reverse
-  end
+class Key
 
   def random_number_generator
     @key = rand(1000..99999).to_s.rjust(5, "0")
@@ -29,11 +18,4 @@ module Encryptable
     end
   end
 
-  def shifts
-    zips = []
-    keys_to_integers.zip(offsets) do |key|
-      zips << key.sum
-    end
-    zips
-  end
 end
