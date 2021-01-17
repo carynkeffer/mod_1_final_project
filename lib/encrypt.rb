@@ -1,13 +1,15 @@
-x = File.open('encrypted.txt', "w")
-puts "Created #{x.path} with the key #{} and date #{}"
-require "pry"; binding.pry
-file_path = ARGV[0]
-response = ARGV[1]
+file = File.open('lib/#{ARGV[0]}', "r")
+enigma = Enigma.new
+enigma.encrypt(message, key, date)
+key =
 
-f = File.new(file_path, "w+")
+date = ARGV[2]
+
+enigma.encrypt(message, key, date)
+
+new_file = File.new('lib/#{ARGV[1]}', "w")
 f.write(response)
 
-require "pry"; binding.pry
-puts "r u ok"
 response = gets.chomp
-require "pry"; binding.pry
+
+puts "Created #{file.path} with the key #{} and date #{}"

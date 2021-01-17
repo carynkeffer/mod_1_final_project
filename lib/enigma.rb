@@ -1,14 +1,16 @@
-require 'date'
-
 class Enigma
 
-  attr_reader :message,
-              :key,
-              :date
+  def initialize
+    @message = message
+    @key = key
+    @date = date
+  end
 
-  def initialize(info)
-    @message = info[:message]
-    @key = info[:key] || rand(1000..99999).to_s
-    @date = info[:date] || Date.today.to_s
+  def encrypt(message, key, date)
+    # create a hash
+  end
+
+  def decrypt
+    # create a hash
   end
 end

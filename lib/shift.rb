@@ -22,7 +22,7 @@ class Shift
     keys
   end
 
-  def shift
+  def shifts
     shifts = Hash.new
     ["a", "b", "c", "d"].each do |letter|
       keys = all_keys.each do |key|
@@ -31,5 +31,13 @@ class Shift
     end
     require "pry"; binding.pry
     shifts
+  end
+
+  def ordinal_values
+    # assing ordinal values to each letter in the message
+  end
+
+  def shift
+    # this is how you rotate ordinal values
   end
 end
