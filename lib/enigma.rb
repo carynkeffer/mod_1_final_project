@@ -1,7 +1,7 @@
 class Enigma
 
   def random_number_generator
-    @key = rand(1000..99999).to_s.rjust(5, "0")
+    key = rand(1000..99999).to_s.rjust(5, "0")
   end
 
   def today

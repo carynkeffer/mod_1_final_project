@@ -1,13 +1,30 @@
-require './lib/datable'
-require './lib/key'
+require './lib/enigma'
 
-class Shift < Key
-  include Datable
+class Shift < Enigma
 
   attr_reader :message
 
+  def initialize
+    @enigma = Enigma.new
+  end
+
   def write(message)
     @message = message
+  end
+
+  def all_keys
+    keys = []
+    require "pry"; binding.pry
+    @enigma.key.split("").each_cons(2) do |num|
+      keys << num[0] + num[1]
+    end
+    keys
+  end
+
+  def keys_to_integers
+    all_keys.map do |key|
+      key.to_i
+    end
   end
 
   def shifts
