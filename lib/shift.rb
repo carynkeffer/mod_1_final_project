@@ -18,18 +18,17 @@ class Shift
     @key.split("").each_cons(2) do |num|
       keys << num[0] + num[1]
     end
-    keys
+    keys.map do |key|
+      key.to_i
+    end
   end
 
   def shifts
-    shifts = Hash.new
-    ["a", "b", "c", "d"].each do |letter|
-      keys = all_keys.each do |key|
-        require "pry"; binding.pry
-      end
+    zips = []
+    all_keys.zip(offsets) do |key|
+      zips << key.sum
     end
-    require "pry"; binding.pry
-    shifts
+    zips
   end
 
   def ordinal_values

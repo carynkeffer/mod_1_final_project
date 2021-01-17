@@ -45,7 +45,6 @@ class ShiftTest < Minitest::Test
   end
 
   def test_it_can_shift
-    skip
     shift = Shift.new
 
     shift.random_number_generator
