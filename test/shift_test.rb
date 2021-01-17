@@ -55,5 +55,6 @@ class ShiftTest < Minitest::Test
     shift.random_number_generator
 
     assert_instance_of Hash, shift.shift
+    assert_equal 4, shift.values.uniq.count
   end
 end

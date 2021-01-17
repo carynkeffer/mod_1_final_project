@@ -25,12 +25,11 @@ class Shift
   def shift
     shifts = Hash.new
     ["a", "b", "c", "d"].each do |letter|
-      all_keys.each do |key|
-        offsets.each do |offset|
-          shifts[letter] = key.to_i + offset
-        end
+      keys = all_keys.each do |key|
+        require "pry"; binding.pry
       end
     end
+    require "pry"; binding.pry
     shifts
   end
 end
