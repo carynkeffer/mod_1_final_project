@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/shift'
 require 'date'
-require 'mocha/minitest'
 
 class ShiftTest < Minitest::Test
 
@@ -46,7 +45,7 @@ class ShiftTest < Minitest::Test
     shift = Shift.new
 
     assert_equal (shift.todays_date.to_i ** 2), shift.date_squared
-        assert_instance_of Array, shift.offsets
+    assert_instance_of Array, shift.offsets
     assert_equal 4, shift.offsets.count
   end
 end
