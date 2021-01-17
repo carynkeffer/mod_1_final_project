@@ -1,5 +1,5 @@
-require './datable'
-require './key'
+require './lib/datable'
+require './lib/key'
 
 class Shift < Key
   include Datable
@@ -30,9 +30,21 @@ class Shift < Key
   def ordinal_values
     ords = []
       @message.chars.map do |char|
+        if char.ord != 32
         ords << char.downcase.ord
+      else
+        ords << char = " "
+      end
     end
     ords
+  end
+
+  def ords_by_index
+    by_index = Hash.new
+    ordinal_values.each_with_index do |ord, index|
+      by_index[index] = ord
+    end
+    by_index
   end
 
   def counter(shift, ordinal)
@@ -45,17 +57,11 @@ class Shift < Key
     ordinal
   end
 
-  def ords_by_index
-    by_index = Hash.new
-    ordinal_values.each_with_index do |ord, index|
-      by_index[index] = ord
-    end
-    by_index
-  end
-
   def parse_index
     shifted_ords = ords_by_index.map do |key|
-      if key[0] % 4 == 3
+      if key[1] == " "
+        key[1] = " "
+      elsif key[0] % 4 == 3
         counter(shifts_by_name["D"], key[1])
       elsif key[0] % 4 == 2
         counter(shifts_by_name["C"], key[1])
@@ -65,6 +71,7 @@ class Shift < Key
         counter(shifts_by_name["A"], key[1])
       end
     end
+    require "pry"; binding.pry
     shifted_ords
   end
 

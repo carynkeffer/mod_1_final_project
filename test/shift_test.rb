@@ -71,13 +71,13 @@ class ShiftTest < Minitest::Test
   end
 
   def test_add_ords_to_shifts
-    skip
     shift = Shift.new
 
     shift.write("hello world")
     shift.random_number_generator
 
     assert_instance_of Array, shift.char_shift_by
+    assert_equal 0, shift.counter(76)
     # assert_equal 0, shift.add_ords_to_shifts.count
   end
 
