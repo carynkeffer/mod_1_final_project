@@ -71,18 +71,7 @@ class Shift < Key
         counter(shifts_by_name["A"], key[1])
       end
     end
-    require "pry"; binding.pry
     shifted_ords
   end
 
-  def char_shift_by
-    # require "pry"; binding.pry
-    ordinal_values.rotate(shifts_by_name["A"])
-  end
-  #
-  # def add_ords_to_shifts
-  #   x = ordinal_values("hello world")
-  #   require "pry"; binding.pry
-  #   # this is how you rotate ordinal values
-  # end
 end

@@ -48,7 +48,7 @@ class ShiftTest < Minitest::Test
     shift.write("hello world")
 
     assert_instance_of Array, shift.ordinal_values
-    assert_equal true, shift.ordinal_values.include?(32)
+    assert_equal false, shift.ordinal_values.include?(32)
   end
 
   def test_ords_by_index
@@ -70,15 +70,15 @@ class ShiftTest < Minitest::Test
     assert_instance_of Array, shift.parse_index
   end
 
-  def test_add_ords_to_shifts
+  def test_add_counter_that_resets_to_parse_indexes
     shift = Shift.new
 
     shift.write("hello world")
     shift.random_number_generator
 
-    assert_instance_of Array, shift.char_shift_by
-    assert_equal 0, shift.counter(76)
-    # assert_equal 0, shift.add_ords_to_shifts.count
+    assert_equal 118, shift.counter(8, 110)
+    assert_equal 97, shift.counter(5, 118)
+    assert_equal 122, shift.counter(5, 117)
   end
 
 end
