@@ -48,4 +48,12 @@ class ShiftTest < Minitest::Test
     assert_instance_of Array, shift.offsets
     assert_equal 4, shift.offsets.count
   end
+
+  def test_it_can_shift
+    shift = Shift.new
+
+    shift.random_number_generator
+
+    assert_instance_of Hash, shift.shift
+  end
 end

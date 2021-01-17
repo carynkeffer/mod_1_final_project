@@ -21,4 +21,16 @@ class Shift
     end
     keys
   end
+
+  def shift
+    shifts = Hash.new
+    ["a", "b", "c", "d"].each do |letter|
+      all_keys.each do |key|
+        offsets.each do |offset|
+          shifts[letter] = key.to_i + offset
+        end
+      end
+    end
+    shifts
+  end
 end
