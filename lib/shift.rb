@@ -43,13 +43,19 @@ class Shift < Key
     by_index
   end
 
-  def char_shift_by
-    ordinal_values.rotate(shifts_by_name["A"])
+  def parse_index
+    ords_by_index.each do |key, ord|
+    require "pry"; binding.pry
+    end
   end
 
-  def add_ords_to_shifts
-    x = ordinal_values("hello world")
-    require "pry"; binding.pry
-    # this is how you rotate ordinal values
-  end
+  # def char_shift_by
+  #   ordinal_values.rotate(shifts_by_name["A"])
+  # end
+  #
+  # def add_ords_to_shifts
+  #   x = ordinal_values("hello world")
+  #   require "pry"; binding.pry
+  #   # this is how you rotate ordinal values
+  # end
 end

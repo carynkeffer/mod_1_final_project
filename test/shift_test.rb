@@ -58,7 +58,16 @@ class ShiftTest < Minitest::Test
     shift.random_number_generator
 
     assert_instance_of Hash, shift.ords_by_index
+    assert_equal shift.ordinal_values.count, shift.ords_by_index.count
+  end
 
+  def test_parse_out_index_ords
+    shift = Shift.new
+
+    shift.write("hello world")
+    shift.random_number_generator
+
+    assert_instance_of Hash, shift.parse_index
   end
 
   def test_add_ords_to_shifts
