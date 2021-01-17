@@ -51,14 +51,24 @@ class ShiftTest < Minitest::Test
     assert_equal true, shift.ordinal_values.include?(32)
   end
 
+  def test_ords_by_index
+    shift = Shift.new
+
+    shift.write("hello world")
+    shift.random_number_generator
+
+    assert_instance_of Hash, shift.ords_by_index
+
+  end
+
   def test_add_ords_to_shifts
     skip
     shift = Shift.new
 
     shift.write("hello world")
+    shift.random_number_generator
 
-    assert_instance_of Array, shift.ordinal_values
-    assert_instance_of Array shift.char_shift_by
+    assert_instance_of Array, shift.char_shift_by
     # assert_equal 0, shift.add_ords_to_shifts.count
   end
 

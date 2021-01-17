@@ -35,9 +35,16 @@ class Shift < Key
     ords
   end
 
+  def ords_by_index
+    by_index = Hash.new
+    ordinal_values.each_with_index do |ord, index|
+      by_index[index] = ord
+    end
+    by_index
+  end
+
   def char_shift_by
-    x = ordinal_values(message)
-    # require "pry"; binding.pry
+    ordinal_values.rotate(shifts_by_name["A"])
   end
 
   def add_ords_to_shifts
