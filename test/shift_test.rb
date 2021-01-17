@@ -10,12 +10,6 @@ class ShiftTest < Minitest::Test
     assert_instance_of Shift, shift
   end
 
-  def test_it_can_find_todays_date
-    shift = Shift.new
-
-    assert_equal Time.now.strftime("%d%m%y"), shift.today
-  end
-
   def test_it_can_assign_offset
     shift = Shift.new
 

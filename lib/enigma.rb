@@ -4,6 +4,10 @@ class Enigma
     @key = rand(1000..99999).to_s.rjust(5, "0")
   end
 
+  def today
+    Time.now.strftime("%d%m%y")
+  end
+
   def encrypt(message, key = random_number_generator, date = nil)
     encrypt_output = Hash.new
     encrypt_output["encryption:"] = message
