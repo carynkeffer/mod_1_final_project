@@ -9,6 +9,12 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, enigma
   end
 
+  def test_random_number_generator
+    enigma = Enigma.new
+
+    assert_equal 5, enigma.random_number_generator.length
+  end
+
   def test_key_can_be_optional
     enigma = Enigma.new
 
