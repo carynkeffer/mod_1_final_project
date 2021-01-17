@@ -1,8 +1,8 @@
-require './lib/encryptable'
+require './lib/datable'
 require './lib/key'
 
 class Shift < Key
-  include Encryptable
+  include Datable
 
   def shifts
     zips = []

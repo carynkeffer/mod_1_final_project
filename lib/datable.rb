@@ -1,4 +1,4 @@
-module Encryptable
+module Datable
   def today
     Time.now.strftime("%d%m%y")
   end
