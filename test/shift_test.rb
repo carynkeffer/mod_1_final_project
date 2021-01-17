@@ -39,6 +39,14 @@ class ShiftTest < Minitest::Test
     assert_equal 2, shift.year.length
     assert_equal 2, shift.day.length
     assert_equal 2, shift.month.length
-    assert_equal "011621", shift.offset
+    assert_equal "011621", shift.todays_date
+  end
+
+  def test_it_can_offset
+    shift = Shift.new
+
+    assert_equal (shift.todays_date.to_i ** 2), shift.date_squared
+        assert_instance_of Array, shift.offsets
+    assert_equal 4, shift.offsets.count
   end
 end

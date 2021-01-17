@@ -15,7 +15,15 @@ module Encryptable
       today[5..6]
     end
 
-    def offset
+    def todays_date
       month + day + year
+    end
+
+    def date_squared
+      todays_date.to_i ** 2
+    end
+
+    def offsets
+      date_squared.digits[0..3].reverse
     end
 end
