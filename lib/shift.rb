@@ -1,15 +1,17 @@
-require './lib/enigma'
-
-class Shift < Enigma
+class Shift
 
   attr_reader :message
 
-  def initialize
-    @enigma = Enigma.new
-  end
-
   def write(message)
     @message = message
+  end
+
+  def date_squared
+    today.to_i ** 2
+  end
+
+  def offsets
+    date_squared.digits[0..3].reverse
   end
 
   def all_keys
