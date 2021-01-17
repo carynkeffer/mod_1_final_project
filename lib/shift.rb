@@ -1,4 +1,3 @@
-require 'date'
 require './lib/encryptable'
 
 class Shift
@@ -10,15 +9,26 @@ class Shift
     @key = key
   end
 
-  def random_number_generator
-    @key = rand(1000..99999).to_s.rjust(5, "0")
+  def shifts_by_name
+    names = ["A", "B", "C", "D"]
+    two_d = names.zip(shifts)
+      two_d.reduce({}) do |hash, key|
+        hash[key[0]] = key[1]
+        hash
+    end
   end
 
-  def all_keys
-    keys = []
-    @key.split("").each_cons(2) do |num|
-      keys << num[0] + num[1]
+  def ordinal_values(message)
+    ords = []
+      message.chars.map do |char|
+        ords << char.downcase.ord
     end
-    keys
+    ords
+  end
+
+  def shift
+    x = ordinal_values("hello world")
+    require "pry"; binding.pry
+    # this is how you rotate ordinal values
   end
 end
