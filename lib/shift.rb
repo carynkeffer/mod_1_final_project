@@ -1,4 +1,3 @@
-require 'date'
 require './lib/encryptable'
 
 class Shift
@@ -34,7 +33,7 @@ class Shift
   end
 
   def ordinal_values
-    # assing ordinal values to each letter in the message
+    # assign ordinal values to each letter in the message
   end
 
   def shift

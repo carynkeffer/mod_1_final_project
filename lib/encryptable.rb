@@ -1,26 +1,10 @@
 module Encryptable
     def today
-      Date.today.strftime
-    end
-
-    def year
-      today[2..3]
-    end
-
-    def day
-      today[8..9]
-    end
-
-    def month
-      today[5..6]
-    end
-
-    def todays_date
-      month + day + year
+      Time.now.strftime("%d%m%y")
     end
 
     def date_squared
-      todays_date.to_i ** 2
+      today.to_i ** 2
     end
 
     def offsets
