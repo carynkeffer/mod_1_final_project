@@ -67,7 +67,7 @@ class ShiftTest < Minitest::Test
     shift.write("hello world")
     shift.random_number_generator
 
-    assert_instance_of Hash, shift.parse_index
+    assert_instance_of Array, shift.parse_index
   end
 
   def test_add_ords_to_shifts

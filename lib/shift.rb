@@ -44,9 +44,18 @@ class Shift < Key
   end
 
   def parse_index
-    ords_by_index.each do |key, ord|
-    require "pry"; binding.pry
+    shifted_ords = ords_by_index.map do |key|
+      if key[0] % 4 == 3
+        shifts_by_name["D"] + key[1]
+      elsif key[0] % 4 == 2
+        shifts_by_name["C"] + key[1]
+      elsif key[0] % 4 == 1
+        shifts_by_name["B"] + key[1]
+      else
+        shifts_by_name["A"] + key[1]
+      end
     end
+    shifted_ords
   end
 
   # def char_shift_by
