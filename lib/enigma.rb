@@ -1,9 +1,6 @@
 class Enigma
 
   def initialize
-    @message = message
-    @key = key
-    @date = date
   end
 
   def encrypt(message, key, date)

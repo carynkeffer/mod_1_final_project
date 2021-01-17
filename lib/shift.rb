@@ -20,10 +20,8 @@ class Shift
 
   def ordinal_values(message)
     ords = []
-    message.split.each do |split|
-      split.chars.map do |char|
+      message.chars.map do |char|
         ords << char.downcase.ord
-      end
     end
     ords
   end
