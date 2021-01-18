@@ -64,4 +64,14 @@ class ShiftTest < Minitest::Test
     assert_instance_of Array, shift.parse_index("!hello-world!", "05665", '012621')
   end
 
+  def test_it_can_return_encrypted
+    shift = Shift.new
+
+    shift.stubs(:today).returns('012621')
+    shift.stubs(:key).returns("05665")
+    shift.stubs(:message).returns("hello world")
+
+    assert_equal "vodzc ocfvv", shift.to_letters("hello world", "05665", '012621')
+  end
+
 end

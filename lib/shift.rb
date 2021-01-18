@@ -60,4 +60,11 @@ class Shift
     shifted_ords
   end
 
+  def to_letters(message, key, date)
+    letters = parse_index(message, key, date).map do |ord|
+      ord.chr
+    end
+    letters.join
+  end
+
 end
