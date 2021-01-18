@@ -1,5 +1,3 @@
-require './lib/shift'
-
 class Enigma
 
   def random_number_generator

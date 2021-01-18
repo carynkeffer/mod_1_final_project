@@ -1,37 +1,47 @@
-class Shift
+require './lib/enigma'
 
+class Shift < Enigma
+
+  # attr_reader :message,
+  #             :key,
+  #             :date
+  #
+  # def initialize(message, key, date)
+  #   @message = message
+  #   @key = key
+  #   @date = date
+  # end
   # attr_reader :message
 
   # def write(message)
   #   @message = message
   # end
 
-  def date_squared
-    @enigma.today.to_i ** 2
+  def date_squared(opt = today)
+    today.to_i ** 2
   end
 
-  def offsets
+  def offsets(opt = date_squared)
     date_squared.digits[0..3].reverse
   end
 
-  def all_keys
+  def all_keys(key)
     keys = []
-    require "pry"; binding.pry
-    @enigma.key.split("").each_cons(2) do |num|
+    key.split("").each_cons(2) do |num|
       keys << num[0] + num[1]
     end
-    keys
+    keys.map { |k| k.to_i }
   end
 
-  def keys_to_integers
-    all_keys.map do |key|
-      key.to_i
-    end
-  end
+  # def keys_to_integers(all_keys)
+  #   all_keys.map do |key|
+  #     key.to_i
+  #   end
+  # end
 
-  def shifts
+  def shifts(all_keys)
     zips = []
-    keys_to_integers.zip(offsets) do |key|
+    all_keys.zip(offsets) do |key|
       zips << key.sum
     end
     zips

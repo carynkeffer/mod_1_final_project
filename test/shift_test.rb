@@ -1,6 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'mocha/minitest'
 require './lib/shift'
+require './lib/enigma'
 
 class ShiftTest < Minitest::Test
 
@@ -9,34 +11,46 @@ class ShiftTest < Minitest::Test
 
     assert_instance_of Shift, shift
   end
+
+  # def test_it_has_attributes
+  #   enigma = Enigma.new
   #
-  # def test_it_can_assign_index_to_all_keys
+  #   enigma.encrypt("hello world", "34010", "170121")
   #
-  #   shift = Shift.new
+  #   shift = Shift.new(enigma.message, enigma.key, enigma.date)
   #
-  #   enigma.encrypt("hello world")
-  #
-  #   assert_equal 4, shift.all_keys.count
-  #   assert_equal 4, shift.keys_to_integers.count
+  #   assert_equal "hello world", shift.message
   # end
-  #
-  # def test_it_can_assign_offset
-  #   shift = Shift.new
-  #
-  #   assert_equal (shift.today.to_i ** 2), shift.date_squared
-  #   assert_instance_of Array, shift.offsets
-  #   assert_equal 4, shift.offsets.count
-  # end
-  #
-  # def test_it_can_assign_shifts
-  #   shift = Shift.new
-  #
-  #   shift.random_number_generator
-  #
-  #   assert_instance_of Array, shift.shifts
-  #   assert_instance_of Hash, shift.shifts_by_name
-  #   assert_instance_of Integer, shift.shifts_by_name["A"]
-  # end
+
+  def test_it_can_create_offsets
+    shift = Shift.new
+
+    shift.stubs(:today).returns('012621')
+    shift.stubs(:date_squared).returns(159289641)
+
+    assert_equal (shift.today.to_i ** 2), shift.date_squared('012621')
+    assert_instance_of Array, shift.offsets(159289641)
+    assert_equal 4, shift.offsets(159289641).count
+  end
+
+  def test_it_can_assign_index_to_all_keys
+    enigma = Enigma.new
+    shift = Shift.new
+
+    encrypt = enigma.encrypt("hello world")
+
+    assert_equal 4, shift.all_keys(encrypt["key:"]).count
+    # assert_equal 4, shift.keys_to_integers(["88", "81", "17", "74"]).count
+  end
+
+  def test_it_can_assign_shifts
+    enigma = Enigma.new
+    shift = Shift.new
+
+    assert_instance_of Array, shift.shifts([88, 81, 17, 74])
+    assert_instance_of Hash, shift.shifts_by_name
+    assert_instance_of Integer, shift.shifts_by_name["A"]
+  end
   #
   # def test_it_has_a_message
   #   shift = Shift.new
