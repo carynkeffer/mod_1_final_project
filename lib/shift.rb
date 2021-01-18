@@ -67,4 +67,8 @@ class Shift
     letters.join
   end
 
+  def encrypt_output(message, key, date)
+    
+  end
+
 end

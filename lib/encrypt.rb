@@ -7,10 +7,12 @@ incoming_text = file.read
 message = gets.chomp
 file.close
 
-output = enigma.encrypt_message(message)
+encrypt = enigma.encrypt(message)
+encrypted = enigma.encrypted(message, key, date)
 
 writer = File.open(ARGV[0], "w")
-writer.write(output)
+writer.write(encrypt)
 writer.close
 
-puts "Created #{ARGV[0]} with the key #{output["key:"]} and date #{output["date:"]}"
+
+puts "Created #{ARGV[0]} with the key #{encrypt[:key]} and date #{encrypt[:date]}"

@@ -10,15 +10,25 @@ class Enigma
     Time.now.strftime("%d%m%y")
   end
 
-  def encrypt(message, key = random_number_generator, date = today)
-      {
-      encryption: message,
+  def output(message, key, date)
+    { encryption: message,
       key: key,
-      date: date
-      }
+      date: date }
   end
 
-  def encrypt_message(message, key = random_number_generator, date = today)
+  def encrypt(message, key = random_number_generator, date = today)
+    encrypted(message, key, date)
+    output(message, key, date)
+  end
+
+  def encrypted(message, key, date)
+    encrypted = Hash.new
+    encrypted["encrypted"] = encrypt_message(message, key, date)
+    encrypted["output"] = output(message, key, date)
+    encrypted
+  end
+
+  def encrypt_message(message, key, date)
     enigmatic = Enigmatic.new
     created = enigmatic.encrypt(message, key, date)
     created
