@@ -1,4 +1,5 @@
 require './lib/enigmatic'
+require './lib/encrypt'
 
 class Enigma
 
@@ -23,7 +24,7 @@ class Enigma
 
   def encrypted(message, key, date)
     encrypted = Hash.new
-    encrypted["encrypted"] = encrypt_message(message, key, date)
+    encrypted["encryption"] = encrypt_message(message, key, date)
     encrypted["output"] = output(message, key, date)
     encrypted
   end
