@@ -4,8 +4,12 @@ class Shift
     today.to_i ** 2
   end
 
-  def offsets(opt = date_squared)
+  def date_squared_last(date_squared)
     date_squared.digits[0..3].reverse
+  end
+
+  def offsets(today)
+    date_squared_last(date_squared(today))
   end
 
   def all_keys(key)
