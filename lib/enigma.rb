@@ -1,4 +1,5 @@
 require './lib/enigmatic'
+require './lib/crypt'
 
 class Enigma
 
@@ -25,7 +26,8 @@ class Enigma
   end
 
   def encrypted(created)
-    require "pry"; binding.pry
+    crypt = Crypt.new
+    crypt.encrypted(created)
   end
 
   def decrypt(ciphertext, key, date)
