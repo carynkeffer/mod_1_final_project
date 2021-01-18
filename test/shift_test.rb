@@ -24,20 +24,13 @@ class ShiftTest < Minitest::Test
     shift.stubs(:key).returns("05665")
 
     assert_equal 4, shift.all_keys("05665").count
-    assert_instance_of Array, shift.shifts([88, 81, 17, 74])
-    assert_equal [97, 87, 21, 75], shift.shifts([88, 81, 17, 74])
+    assert_instance_of Array, shift.each_shift_value([05, 56, 66, 65])
+    assert_equal [14, 62, 70, 66], shift.each_shift_value([05, 56, 66, 65])
+    assert_equal [14, 62, 70, 66], shift.shifts("05665", '012621')
     assert_instance_of Hash, shift.shifts_by_name
     assert_instance_of Integer, shift.shifts_by_name["A"]
   end
-  #
-  # def test_it_can_assign_shifts
-  #   enigma = Enigma.new
-  #   shift = Shift.new
-  #
-  #   assert_instance_of Array, shift.shifts([88, 81, 17, 74])
-  #   assert_instance_of Hash, shift.shifts_by_name
-  #   assert_instance_of Integer, shift.shifts_by_name["A"]
-  # end
+
 #   #
 #   # def test_it_has_a_message
 #   #   shift = Shift.new
