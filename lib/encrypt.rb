@@ -7,7 +7,7 @@ incoming_text = file.read
 message = gets.chomp
 file.close
 
-output = enigma.encrypt(message)
+output = enigma.encrypt_message(message)
 
 writer = File.open(ARGV[0], "w")
 writer.write(output)
