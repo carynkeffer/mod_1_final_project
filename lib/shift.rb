@@ -22,7 +22,7 @@ class Shift
 
   def shifts(all_keys)
     zips = []
-    all_keys.zip(offsets) do |key|
+    all_keys.zip(offsets(today)) do |key|
       zips << key.sum
     end
     zips
@@ -30,7 +30,7 @@ class Shift
 
   def shifts_by_name
     names = ["A", "B", "C", "D"]
-    two_d = names.zip(shifts)
+    two_d = names.zip(shifts(all_keys(key)))
       two_d.reduce({}) do |hash, key|
         hash[key[0]] = key[1]
         hash

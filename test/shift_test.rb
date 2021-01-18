@@ -5,12 +5,6 @@ require './lib/shift'
 
 class ShiftTest < Minitest::Test
 
-  # def test_it_exists
-  #   shift = Shift.new
-  #
-  #   assert_instance_of Shift, shift
-  # end
-#
   def test_it_can_create_offsets
     shift = Shift.new
 
@@ -26,18 +20,24 @@ class ShiftTest < Minitest::Test
   def test_it_can_assign_index_to_all_keys
     shift = Shift.new
 
-    assert_equal 4, shift.all_keys(encrypt["key:"]).count
-    # assert_equal 4, shift.keys_to_integers(["88", "81", "17", "74"]).count
+    shift.stubs(:today).returns('012621')
+    shift.stubs(:key).returns("05665")
+
+    assert_equal 4, shift.all_keys("05665").count
+    assert_instance_of Array, shift.shifts([88, 81, 17, 74])
+    assert_equal [97, 87, 21, 75], shift.shifts([88, 81, 17, 74])
+    assert_instance_of Hash, shift.shifts_by_name
+    assert_instance_of Integer, shift.shifts_by_name["A"]
   end
-#
-#   def test_it_can_assign_shifts
-#     enigma = Enigma.new
-#     shift = Shift.new
-#
-#     assert_instance_of Array, shift.shifts([88, 81, 17, 74])
-#     assert_instance_of Hash, shift.shifts_by_name
-#     assert_instance_of Integer, shift.shifts_by_name["A"]
-#   end
+  #
+  # def test_it_can_assign_shifts
+  #   enigma = Enigma.new
+  #   shift = Shift.new
+  #
+  #   assert_instance_of Array, shift.shifts([88, 81, 17, 74])
+  #   assert_instance_of Hash, shift.shifts_by_name
+  #   assert_instance_of Integer, shift.shifts_by_name["A"]
+  # end
 #   #
 #   # def test_it_has_a_message
 #   #   shift = Shift.new
