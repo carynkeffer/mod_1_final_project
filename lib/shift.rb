@@ -1,13 +1,13 @@
 class Shift
 
-  attr_reader :message
+  # attr_reader :message
 
-  def write(message)
-    @message = message
-  end
+  # def write(message)
+  #   @message = message
+  # end
 
   def date_squared
-    today.to_i ** 2
+    @enigma.today.to_i ** 2
   end
 
   def offsets

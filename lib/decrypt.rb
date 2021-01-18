@@ -1,5 +1,7 @@
-x = File.open('decrypted.txt', "r")
-puts "Created #{x.path} with the key #{} and date #{}"
+require './lib/shift'
+require './lib/enigma'
 
+shift = Shift.new
 enigma = Enigma.new
-engima.decrypt(message, key, date)
+
+file = File.open(ARGV[0], "r")

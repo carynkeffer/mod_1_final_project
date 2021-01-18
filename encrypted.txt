@@ -1,3 +1,3 @@
-HELLO WORLD
-GOOD MORNING
-A MESSAGE TO ENCRYPT
+hello world
+good morning
+a message to encrypt
