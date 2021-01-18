@@ -1,3 +1,5 @@
+require './lib/enigmatic'
+
 class Enigma
 
   def random_number_generator
@@ -9,6 +11,8 @@ class Enigma
   end
 
   def encrypt(message, key = random_number_generator, date = today)
+    enigmatic = Enigmatic.new
+    enigmatic.encrypt(message, key, date)
     encrypt_output = Hash.new
     encrypt_output["encryption:"] = message
     encrypt_output["key:"] = key
@@ -16,7 +20,7 @@ class Enigma
     encrypt_output
   end
 
-  def decrypt(message, key, date)
+  def decrypt(ciphertext, key, date)
     # create a hash
   end
 end
