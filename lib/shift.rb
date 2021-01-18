@@ -3,7 +3,12 @@ require './lib/shiftable'
 class Shift
   include Shiftable
 
-def shifts_by_name
+  def shifts(key, today)
+    keys = all_keys(key)
+    each_shift_value(keys)
+  end
+
+  def shifts_by_name
     names = ["A", "B", "C", "D"]
     two_d = names.zip(shifts(key, today))
       two_d.reduce({}) do |hash, key|
@@ -15,18 +20,18 @@ def shifts_by_name
   def ordinal_values(message)
     ords = []
       message.chars.map do |char|
-        if char.ord != 32
-        ords << char.downcase.ord
-      else
-        ords << char = " "
+        if char.ord <= 96 || char.ord >= 123
+          ords << char
+        else
+          ords << char.downcase.ord
+        end
       end
-    end
     ords
   end
 
   def ords_by_index
     by_index = Hash.new
-    ordinal_values.each_with_index do |ord, index|
+    ordinal_values(message).each_with_index do |ord, index|
       by_index[index] = ord
     end
     by_index
@@ -44,8 +49,8 @@ def shifts_by_name
 
   def parse_index
     shifted_ords = ords_by_index.map do |key|
-      if key[1] == " "
-        key[1] = " "
+      if key[1].class == String
+        key[1] = key[1]
       elsif key[0] % 4 == 3
         counter(shifts_by_name["D"], key[1])
       elsif key[0] % 4 == 2

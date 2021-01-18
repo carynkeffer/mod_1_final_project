@@ -28,8 +28,4 @@ module Shiftable
     zips
   end
 
-  def shifts(key, today)
-    keys = all_keys(key)
-    each_shift_value(keys)
-  end
 end
