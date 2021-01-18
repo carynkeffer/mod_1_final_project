@@ -24,6 +24,10 @@ class Enigma
     enigmatic.encrypt(message, key, date)
   end
 
+  def encrypted(created)
+    require "pry"; binding.pry
+  end
+
   def decrypt(ciphertext, key, date)
     # create a hash
   end
