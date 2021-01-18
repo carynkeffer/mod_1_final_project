@@ -1,35 +1,20 @@
-require './lib/datable'
-require './lib/key'
+require './lib/shiftable'
 
-class Shift < Key
-  include Datable
+class Shift
+  include Shiftable
 
-  attr_reader :message
-
-  def write(message)
-    @message = message
-  end
-
-  def shifts
-    zips = []
-    keys_to_integers.zip(offsets) do |key|
-      zips << key.sum
-    end
-    zips
-  end
-
-  def shifts_by_name
+def shifts_by_name
     names = ["A", "B", "C", "D"]
-    two_d = names.zip(shifts)
+    two_d = names.zip(shifts(key, today))
       two_d.reduce({}) do |hash, key|
         hash[key[0]] = key[1]
         hash
     end
   end
 
-  def ordinal_values
+  def ordinal_values(message)
     ords = []
-      @message.chars.map do |char|
+      message.chars.map do |char|
         if char.ord != 32
         ords << char.downcase.ord
       else

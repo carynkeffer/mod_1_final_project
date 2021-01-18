@@ -9,12 +9,6 @@ class KeyTest < Minitest::Test
     assert_instance_of Key, key
   end
 
-  def test_random_number_generator
-    key = Key.new
-
-    assert_equal 5, key.random_number_generator.length
-  end
-
   def test_it_can_assign_index_to_all_keys
     key = Key.new
 
