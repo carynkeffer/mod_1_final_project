@@ -24,11 +24,11 @@ class ShiftTest < Minitest::Test
     shift.stubs(:key).returns("05665")
 
     assert_equal 4, shift.all_keys("05665").count
-    assert_instance_of Array, shift.each_shift_value([05, 56, 66, 65])
-    assert_equal [14, 62, 70, 66], shift.each_shift_value([05, 56, 66, 65])
+    assert_instance_of Array, shift.each_shift_value([05, 56, 66, 65], '012621')
+    assert_equal [14, 62, 70, 66], shift.each_shift_value([05, 56, 66, 65], '012621')
     assert_equal [14, 62, 70, 66], shift.shifts("05665", '012621')
-    assert_instance_of Hash, shift.shifts_by_name
-    assert_instance_of Integer, shift.shifts_by_name["A"]
+    assert_instance_of Hash, shift.shifts_by_name("05665", '012621')
+    assert_instance_of Integer, shift.shifts_by_name("05665", '012621')["A"]
   end
 
   def test_ordinal_values
@@ -43,7 +43,7 @@ class ShiftTest < Minitest::Test
 
     shift.stubs(:message).returns("hello world")
 
-    assert_instance_of Hash, shift.ords_by_index
+    assert_instance_of Hash, shift.ords_by_index("hello world")
   end
 
   def test_counter
@@ -61,7 +61,17 @@ class ShiftTest < Minitest::Test
     shift.stubs(:key).returns("05665")
     shift.stubs(:message).returns("!hello-world!")
 
-    assert_instance_of Array, shift.parse_index
+    assert_instance_of Array, shift.parse_index("!hello-world!", "05665", '012621')
+  end
+
+  def test_it_can_return_encrypted
+    shift = Shift.new
+
+    shift.stubs(:today).returns('012621')
+    shift.stubs(:key).returns("05665")
+    shift.stubs(:message).returns("hello world")
+
+    assert_equal "vodzc ocfvv", shift.to_letters("hello world", "05665", '012621')
   end
 
 end

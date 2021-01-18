@@ -1,15 +1,15 @@
 module Shiftable
 
-  def date_squared(today)
-    today.to_i ** 2
+  def date_squared(date)
+    date.to_i ** 2
   end
 
   def date_squared_last(date_squared)
     date_squared.digits[0..3].reverse
   end
 
-  def offsets(today)
-    date_squared_last(date_squared(today))
+  def offsets(date)
+    date_squared_last(date_squared(date))
   end
 
   def all_keys(key)
@@ -20,12 +20,17 @@ module Shiftable
     keys.map { |k| k.to_i }
   end
 
-  def each_shift_value(all_keys)
+  def each_shift_value(all_keys, date)
     zips = []
-    all_keys.zip(offsets(today)) do |key|
+    all_keys.zip(offsets(date)) do |key|
       zips << key.sum
     end
     zips
+  end
+
+  def shifts(key, date)
+    keys = all_keys(key)
+    each_shift_value(keys, date)
   end
 
 end
