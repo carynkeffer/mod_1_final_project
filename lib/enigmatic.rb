@@ -5,7 +5,8 @@ class Enigmatic
 
   def encrypt(message, key, date)
     shifting = Shift.new
-    shifting.to_letters(message, key, date)
+    created = shifting.to_letters(message, key, date)
+    created
   end
 
 

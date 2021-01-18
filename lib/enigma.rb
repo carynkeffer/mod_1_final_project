@@ -12,12 +12,13 @@ class Enigma
 
   def encrypt(message, key = random_number_generator, date = today)
     enigmatic = Enigmatic.new
-    enigmatic.encrypt(message, key, date)
+    created = enigmatic.encrypt(message, key, date)
     encrypt_output = Hash.new
     encrypt_output["encryption:"] = message
     encrypt_output["key:"] = key
     encrypt_output["date:"] = date
     encrypt_output
+    created
   end
 
   def decrypt(ciphertext, key, date)
