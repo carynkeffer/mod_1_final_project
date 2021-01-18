@@ -1,3 +1,5 @@
+require './lib/enigmatic'
+
 class Enigma
 
   def encrypt(message, key, date)
