@@ -1,3 +1,0 @@
-hello world
-good morning
-a message to encrypt
