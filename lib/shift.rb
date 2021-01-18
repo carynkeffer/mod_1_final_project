@@ -1,23 +1,6 @@
-require './lib/enigma'
+class Shift
 
-class Shift < Enigma
-
-  # attr_reader :message,
-  #             :key,
-  #             :date
-  #
-  # def initialize(message, key, date)
-  #   @message = message
-  #   @key = key
-  #   @date = date
-  # end
-  # attr_reader :message
-
-  # def write(message)
-  #   @message = message
-  # end
-
-  def date_squared(opt = today)
+  def date_squared(today)
     today.to_i ** 2
   end
 
@@ -32,12 +15,6 @@ class Shift < Enigma
     end
     keys.map { |k| k.to_i }
   end
-
-  # def keys_to_integers(all_keys)
-  #   all_keys.map do |key|
-  #     key.to_i
-  #   end
-  # end
 
   def shifts(all_keys)
     zips = []

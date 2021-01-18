@@ -12,16 +12,6 @@ class ShiftTest < Minitest::Test
     assert_instance_of Shift, shift
   end
 
-  # def test_it_has_attributes
-  #   enigma = Enigma.new
-  #
-  #   enigma.encrypt("hello world", "34010", "170121")
-  #
-  #   shift = Shift.new(enigma.message, enigma.key, enigma.date)
-  #
-  #   assert_equal "hello world", shift.message
-  # end
-
   def test_it_can_create_offsets
     shift = Shift.new
 
