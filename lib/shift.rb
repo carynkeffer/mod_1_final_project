@@ -31,7 +31,7 @@ class Shift
 
   def ords_by_index
     by_index = Hash.new
-    ordinal_values.each_with_index do |ord, index|
+    ordinal_values(message).each_with_index do |ord, index|
       by_index[index] = ord
     end
     by_index
@@ -49,8 +49,8 @@ class Shift
 
   def parse_index
     shifted_ords = ords_by_index.map do |key|
-      if key[1] == " "
-        key[1] = " "
+      if key[1].class == String
+        key[1] = key[1]
       elsif key[0] % 4 == 3
         counter(shifts_by_name["D"], key[1])
       elsif key[0] % 4 == 2
