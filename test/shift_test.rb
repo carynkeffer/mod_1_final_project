@@ -31,23 +31,13 @@ class ShiftTest < Minitest::Test
     assert_instance_of Integer, shift.shifts_by_name["A"]
   end
 
-#   #
-#   # def test_it_has_a_message
-#   #   shift = Shift.new
-#   #
-#   #   shift.write("hello world")
-#   #
-#   #   assert_equal "hello world", shift.message
-#   # end
-#   #
-#   # def test_ordinal_values
-#   #   shift = Shift.new
-#   #
-#   #   shift.write("hello world")
-#   #
-#   #   assert_instance_of Array, shift.ordinal_values
-#   #   assert_equal false, shift.ordinal_values.include?(32)
-#   # end
+  def test_ordinal_values
+    shift = Shift.new
+
+    assert_instance_of Array, shift.ordinal_values("hello world")
+    assert_equal Array, shift.ordinal_values("hello-world!")
+    # assert_equal false, shift.ordinal_values.include?(32)
+  end
 #   #
 #   # def test_ords_by_index
 #   #   shift = Shift.new
