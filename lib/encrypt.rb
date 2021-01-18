@@ -4,13 +4,18 @@ require './lib/enigma'
 shift = Shift.new
 enigma = Enigma.new
 
-file = File.open("#{ARGV[0]}", "r")
+file = File.open(ARGV[0], "r")
+incoming_text = file.read
+file.close
+encrypted = incoming_text.upcase
 message = gets.chomp
-require "pry"; binding.pry
+puts "Created #{ARGV[0]} with the key"
+# require "pry"; binding.pry
+writer = File.open(ARGV[0], "w")
+writer.write(encrypted)
+writer.close
+        # enigma.encrypt(message, key, date)
 
-file_2 = File.open("#{ARGV[1]}", "a+").each do |x|
-        x << [enigma.encrypt(message, key, date)]
-end
 require "pry"; binding.pry
 
 # date = ARGV[2]
