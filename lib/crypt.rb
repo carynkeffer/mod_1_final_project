@@ -12,12 +12,10 @@ class Crypt
     puts "Created #{ARGV[0]} with the key #{encrypted["key:"]} and date #{encrypted["date:"]}"
   end
 
-  # writer = File.open(ARGV[0], "w")
-  # writer.write(encrypted)
-  # writer.close
-
-
   def encrypted(created)
     created
+    writer = File.open(ARGV[1], "w")
+    writer.write(created)
+    writer.close
   end
 end

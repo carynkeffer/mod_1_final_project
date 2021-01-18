@@ -1,1 +1,0 @@
-{"encryption:"=>"hello world", "key:"=>"84574", "date:"=>"180121"}
