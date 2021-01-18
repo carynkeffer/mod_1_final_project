@@ -22,7 +22,7 @@ class EnigmaTest < Minitest::Test
                 "date:" => '012621'
                 }
 
-    assert_equal expected, enigma.encrypt("hello world")
+    assert_equal "oxrdv cgyej", enigma.encrypt("hello world")
   end
 
   def test_random_number_generator
