@@ -98,7 +98,6 @@ class Shift
     letters = reverse_index(message, key, date).map do |ord|
       ord.chr
     end
-    require "pry"; binding.pry
     letters.join
   end
 
