@@ -13,10 +13,17 @@ class Crypt
   end
 
   def open_decrypt
-    file_encrypt = ARGV[0]
-    file_decrypt = ARGV[1]
-    arg_key = ARGV[2]
-    arg_date = ARGV[3]
+    enigma = Enigma.new
+    encrypted_message = ARGV[0]
+    decrypted_message = ARGV[1]
+    key = ARGV[2]
+    date = ARGV[3] || nil
+    file = File.open(encrypted_message, "r")
+    file.read
+    ciphertext = gets.chomp
+    file.close
+    decrypted = enigma.decrypt(ciphertext, key, date)
+    puts "Created #{ARGV[0]} with the key #{ARGV[2]} and date #{ARGV[3]}"
   end
 
   def encrypted(created)
