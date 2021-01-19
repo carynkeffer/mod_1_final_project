@@ -1,7 +1,4 @@
-require './lib/shift'
-require './lib/enigma'
+require './lib/crypt'
 
-shift = Shift.new
-enigma = Enigma.new
-
-file = File.open(ARGV[0], "r")
+crypt = Crypt.new
+crypt.open_decrypt
