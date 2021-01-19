@@ -14,7 +14,8 @@ class Crypt
 
   def encrypted(created)
     created
-    writer = File.open(ARGV[1], "w")
+    file = ARGV[0]
+    writer = File.open(file, "w")
     writer.write(created)
     writer.close
   end
