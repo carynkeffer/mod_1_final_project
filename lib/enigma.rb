@@ -34,7 +34,21 @@ class Enigma
     crypt.encrypted(created)
   end
 
-  def decrypt(ciphertext, key, date)
-    # create a hash
+  def decrypt(ciphertext, key, date = today)
+    decrypt_message(ciphertext, key, date)
+    decrypt_output(ciphertext, key, date)
+  end
+
+  def decrypt_message(ciphertext, key, date)
+    enigmatic = Enigmatic.new
+    enigmatic.decrypt(ciphertext, key, date)
+  end
+
+  def decrypt_output(ciphertext, key, date)
+    decrypt_output = Hash.new
+    decrypt_output["decryption:"] = ciphertext
+    decrypt_output["key:"] = key
+    decrypt_output["date:"] = date
+    decrypt_output
   end
 end

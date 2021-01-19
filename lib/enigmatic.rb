@@ -14,5 +14,9 @@ class Enigmatic
     enigma.encrypted(created)
   end
 
+  def decrypt(message, key, date)
+    shifting = Shift.new
+  end
+
 
 end

@@ -9,8 +9,21 @@ class Crypt
     message = gets.chomp
     file.close
     encrypted = enigma.encrypt(message)
-    # require "pry"; binding.pry
     puts "Created #{ARGV[0]} with the key #{encrypted["key:"]} and date #{encrypted["date:"]}"
+  end
+
+  def open_decrypt
+    enigma = Enigma.new
+    encrypted_message = ARGV[0]
+    decrypted_message = ARGV[1]
+    key = ARGV[2]
+    date = ARGV[3] || nil
+    file = File.open(encrypted_message, "r")
+    file.read
+    ciphertext = gets.chomp
+    file.close
+    decrypted = enigma.decrypt(ciphertext, key, date)
+    puts "Created #{ARGV[0]} with the key #{ARGV[2]} and date #{ARGV[3]}"
   end
 
   def encrypted(created)
