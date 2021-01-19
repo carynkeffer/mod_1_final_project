@@ -51,9 +51,5 @@ class Enigma
     crypt = Crypt.new
     crypt.crypted(new_message)
   end
-  #
-  # def decrypted(solved)
-  #   crypt = Crypt.new
-  #   crypt.decrypted(solved)
-  # end
+
 end
