@@ -16,12 +16,6 @@ class EnigmaTest < Minitest::Test
     enigma.stubs(:random_number_generator).returns('76543')
     enigma.stubs(:today).returns('012621')
 
-    expected = {
-                "encryption:" => "hello world",
-                "key:" => '76543',
-                "date:" => '012621'
-                }
-
     assert_equal "oxrdv cgyej", enigma.encrypt("hello world")
   end
 
@@ -35,5 +29,17 @@ class EnigmaTest < Minitest::Test
     enigma = Enigma.new
 
     assert_equal Time.now.strftime("%d%m%y"), enigma.today
+  end
+
+  def test_encrypt_output
+    enigma = Enigma.new
+
+    expected = {
+                "encryption:" => "hello world",
+                "key:" => '76543',
+                "date:" => '012621'
+                }
+
+    assert_insatnce_of Hash, enigma.encrypt_output
   end
 end
