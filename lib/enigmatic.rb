@@ -17,8 +17,12 @@ class Enigmatic
   def decrypt(ciphertext, key, date)
     shifting = Shift.new
     solved = shifting.reverse_letters(message = ciphertext, key, date)
-    require "pry"; binding.pry
+    self.decrypted_message(solved)
   end
 
+  def decrypted_message(solved)
+    enigma = Enigma.new
+    enigma.decrypted(solved)
+  end
 
 end

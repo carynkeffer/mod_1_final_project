@@ -51,4 +51,9 @@ class Enigma
     decrypt_output["date:"] = date
     decrypt_output
   end
+
+  def decrypted(solved)
+    crypt = Crypt.new
+    crypt.decrypted(solved)
+  end
 end

@@ -27,9 +27,14 @@ class Crypt
   end
 
   def encrypted(created)
-    created
     writer = File.open(ARGV[0], "w")
     writer.write(created)
+    writer.close
+  end
+
+  def decrypted(solved)
+    writer = File.open(ARGV[0], "w")
+    writer.write(solved)
     writer.close
   end
 end
