@@ -37,7 +37,7 @@ class Shift
     counter_value = shift
       until counter_value == 0
         ordinal += 1
-        ordinal = 97 if ordinal == 123
+        ordinal = 96 if ordinal == 122
         counter_value -= 1
       end
       ordinal
@@ -71,7 +71,7 @@ class Shift
     counter_value = shift
       until counter_value == 0
         ordinal -= 1
-        ordinal = 123 if ordinal == 97
+        ordinal = 122 if ordinal == 96
         counter_value -= 1
       end
       ordinal
@@ -92,6 +92,14 @@ class Shift
       end
     end
     shifted_ords
+  end
+
+  def reverse_letters(message, key, date)
+    letters = reverse_index(message, key, date).map do |ord|
+      ord.chr
+    end
+    require "pry"; binding.pry
+    letters.join
   end
 
 end
