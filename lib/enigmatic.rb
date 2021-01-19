@@ -14,8 +14,11 @@ class Enigmatic
     enigma.encrypted(created)
   end
 
-  def decrypt(message, key, date)
+  def decrypt(ciphertext, key, date)
     shifting = Shift.new
+    shifting.reverse_index(message = ciphertext, key, date)
+    # solved = shifting.parse_index(message = ciphertext, key, date)
+    # require "pry"; binding.pry
   end
 
 

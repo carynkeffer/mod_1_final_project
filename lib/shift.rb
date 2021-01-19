@@ -67,4 +67,31 @@ class Shift
     letters.join
   end
 
+  def reverse_counter(shift, ordinal)
+    counter_value = shift
+      until counter_value == 0
+        ordinal -= 1
+        ordinal = 123 if ordinal == 97
+        counter_value -= 1
+      end
+      ordinal
+  end
+
+  def reverse_index(message, key, date)
+    shifted_ords = ords_by_index(message).map do |join|
+      if join[1].class == String
+        join[1] = join[1]
+      elsif join[0] % 4 == 3
+        reverse_counter(shifts_by_name(key, date)["D"], join[1])
+      elsif join[0] % 4 == 2
+        reverse_counter(shifts_by_name(key, date)["C"], join[1])
+      elsif join[0] % 4 == 1
+        reverse_counter(shifts_by_name(key, date)["B"], join[1])
+      else
+        reverse_counter(shifts_by_name(key, date)["A"], join[1])
+      end
+    end
+    shifted_ords
+  end
+
 end
