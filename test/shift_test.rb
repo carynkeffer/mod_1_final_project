@@ -46,12 +46,15 @@ class ShiftTest < Minitest::Test
     assert_instance_of Hash, shift.ords_by_index("hello world")
   end
 
-  def test_counter
+  def test_counter_and_reverse_counter
     shift = Shift.new
 
     assert_equal 118, shift.counter(8, 110)
     assert_equal 97, shift.counter(5, 118)
     assert_equal 122, shift.counter(5, 117)
+    assert_equal 112, shift.reverse_counter(5, 117)
+    assert_equal 113, shift.reverse_counter(5, 118)
+    assert_equal 117, shift.reverse_counter(5, 122)
   end
 
   def test_parse_index
@@ -62,16 +65,28 @@ class ShiftTest < Minitest::Test
     shift.stubs(:message).returns("!hello-world!")
 
     assert_instance_of Array, shift.parse_index("!hello-world!", "05665", '012621')
+    assert_equal ["!", 114, 119, 122, 122, 121, "-", 107, 99, 98, 100, 114, "!"], shift.parse_index("!hello-world!", "05665", '012621')
   end
 
-  def test_it_can_return_encrypted
+  def test_reverse_index
     shift = Shift.new
 
     shift.stubs(:today).returns('012621')
     shift.stubs(:key).returns("05665")
-    shift.stubs(:message).returns("hello world")
+    shift.stubs(:message).returns("!hello-world!")
 
-    assert_equal "vodzc ocfvv", shift.to_letters("hello world", "05665", '012621')
+    assert_instance_of Array, shift.reverse_index("!hello-world!", "05665", '012621')
+    assert_equal ["!", 120, 109, 120, 120, 101, "-", 105, 97, 104, 116, 112, "!"], shift.reverse_index("!hello-world!", "05665", '012621')
+  end
+
+  def test_it_can_return_decrypted
+    shift = Shift.new
+
+    shift.stubs(:key).returns("50960")
+    shift.stubs(:today).returns("190121")
+    shift.stubs(:message).returns("jthuq sxtaz")
+
+    assert_equal "hello world", shift.reverse_letters("jthuq sxtaz", "50960", "190121")
   end
 
 end
