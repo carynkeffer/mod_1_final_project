@@ -20,9 +20,4 @@ class Enigmatic
     enigma.crypted(new_message)
   end
 
-  # def decrypted_message(new_message)
-  #   enigma = Enigma.new
-  #   enigma.decrypted(new_message)
-  # end
-
 end

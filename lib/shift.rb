@@ -4,35 +4,6 @@ require './lib/shiftable'
 class Shift
   include Shiftable
 
-  def shifts_by_name(key, date)
-    names = ["A", "B", "C", "D"]
-    two_d = names.zip(shifts(key, date))
-      two_d.reduce({}) do |hash, key|
-        hash[key[0]] = key[1]
-        hash
-    end
-  end
-
-  def ordinal_values(message)
-    ords = []
-      message.chars.map do |char|
-        if char.ord <= 96 || char.ord >= 123
-          ords << char
-        else
-          ords << char.downcase.ord
-        end
-      end
-    ords
-  end
-
-  def ords_by_index(message)
-    by_index = Hash.new
-    ordinal_values(message).each_with_index do |ord, index|
-      by_index[index] = ord
-    end
-    by_index
-  end
-
   def counter(shift, ordinal)
     counter_value = shift
       until counter_value == 0
