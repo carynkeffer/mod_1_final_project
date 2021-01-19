@@ -79,6 +79,16 @@ class ShiftTest < Minitest::Test
     assert_equal ["!", 120, 109, 120, 120, 101, "-", 105, 97, 104, 116, 112, "!"], shift.reverse_index("!hello-world!", "05665", '012621')
   end
 
+  def test_it_can_return_encrypted
+    shift = Shift.new
+
+    shift.stubs(:key).returns("50960")
+    shift.stubs(:today).returns("190121")
+    shift.stubs(:message).returns("jthuq sxtaz")
+
+    assert_equal "jthuq sxtaz", shift.to_letters("hello world", "50960", "190121")
+  end
+
   def test_it_can_return_decrypted
     shift = Shift.new
 
