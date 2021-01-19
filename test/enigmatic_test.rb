@@ -14,4 +14,10 @@ class EnigmaticTest < Minitest::Test
 
     assert_equal "vodzc ocfvv", enigmatic.encrypt("hello world", "05665", '012621')
   end
+
+  def test_it_can_decrypt
+    enigmatic = Enigmatic.new
+
+    assert_equal [100, 112, 97, 101, 107, " ", 108, 104, 110, 119, 115], enigmatic.decrypt("dpaek lhnws")
+  end
 end
