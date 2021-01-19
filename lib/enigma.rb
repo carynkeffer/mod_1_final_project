@@ -1,5 +1,5 @@
-require './lib/enigmatic'
-require './lib/crypt'
+require_relative './enigmatic'
+require_relative './crypt'
 
 class Enigma
 

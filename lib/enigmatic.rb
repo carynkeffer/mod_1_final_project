@@ -1,5 +1,5 @@
-require './lib/shift'
-require './lib/enigma'
+require_relative './shift'
+require_relative './enigma'
 
 class Enigmatic
 

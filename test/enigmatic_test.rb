@@ -1,8 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/enigmatic'
-require './lib/shift'
-require 'mocha/minitest'
+require_relative './test_helper'
 
 class EnigmaticTest < Minitest::Test
   def test_it_can_encrypt

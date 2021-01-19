@@ -1,5 +1,5 @@
-require './lib/enigmatic'
-require './lib/shiftable'
+require_relative './enigmatic'
+require_relative './shiftable'
 
 class Shift
   include Shiftable
