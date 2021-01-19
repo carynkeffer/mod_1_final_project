@@ -21,15 +21,21 @@ class Crypt
       end
   end
 
-  def encrypted(created)
+  def crypted(new_message)
     writer = File.open(ARGV[0], "w")
-    writer.write(created)
+    writer.write(new_message)
     writer.close
   end
 
-  def decrypted(solved)
-    writer = File.open(ARGV[0], "w")
-    writer.write(solved)
-    writer.close
-  end
+  # def encrypted(created)
+  #   writer = File.open(ARGV[0], "w")
+  #   writer.write(created)
+  #   writer.close
+  # end
+  #
+  # def decrypted(solved)
+  #   writer = File.open(ARGV[0], "w")
+  #   writer.write(solved)
+  #   writer.close
+  # end
 end

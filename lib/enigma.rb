@@ -29,11 +29,6 @@ class Enigma
     encrypt_output
   end
 
-  def encrypted(created)
-    crypt = Crypt.new
-    crypt.encrypted(created)
-  end
-
   def decrypt(ciphertext, key, date = today)
     decrypt_message(ciphertext, key, date)
     decrypt_output(ciphertext, key, date)
@@ -52,8 +47,13 @@ class Enigma
     decrypt_output
   end
 
-  def decrypted(solved)
+  def crypted(new_message)
     crypt = Crypt.new
-    crypt.decrypted(solved)
+    crypt.crypted(new_message)
   end
+  #
+  # def decrypted(solved)
+  #   crypt = Crypt.new
+  #   crypt.decrypted(solved)
+  # end
 end
