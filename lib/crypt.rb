@@ -19,7 +19,7 @@ class Crypt
         ciphertext = gets.chomp
         file.close
         decrypted = enigma.decrypt(ciphertext, key, date)
-        puts "Created #{ARGV[0]} with the key #{ARGV[2]} and date #{ARGV[3]}"
+        puts "Created #{ARGV[0]} with the key #{ARGV[1]} and date #{ARGV[2]}"
       end
   end
 
