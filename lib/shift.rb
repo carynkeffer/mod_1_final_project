@@ -8,7 +8,7 @@ class Shift
     counter_value = shift
       until counter_value == 0
         ordinal += 1
-        ordinal = 96 if ordinal == 122
+        ordinal = 97 if ordinal == 123
         counter_value -= 1
       end
       ordinal
